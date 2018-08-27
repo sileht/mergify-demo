@@ -1,2 +1,3 @@
-# demo
-Demo of Mergify.io
+# Demo of Mergify.io
+
+You can send pull requests on this and have fun.
