@@ -9,8 +9,7 @@ rules:
   branches:
     automerge:
       protection:
-        required_pull_request_reviews:
-          required_approving_review_count: 0
+        required_pull_request_reviews: null
         required_status_checks:
           contexts:
             - continuous-integration/travis-ci
