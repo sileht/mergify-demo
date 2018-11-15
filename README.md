@@ -7,3 +7,5 @@ This is awesome!
 I love Mergify!
 
 Me too!
+
+This is Amazing! Love Love Merify.
