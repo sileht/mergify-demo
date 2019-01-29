@@ -1,15 +1,20 @@
-rules:
-  default:
-    protection:
-      required_pull_request_reviews:
-        required_approving_review_count: 1
-      required_status_checks:
-        contexts:
-          - continuous-integration/travis-ci
-  branches:
-    automerge:
-      protection:
-        required_pull_request_reviews: null
-        required_status_checks:
-          contexts:
-            - continuous-integration/travis-ci
+pull_request_rules:
+- name: default
+  actions:
+    merge:
+      method: merge
+      rebase_fallback: merge
+  conditions:
+  - -base=automerge
+  - label!=no-mergify
+  - '#approved-reviews-by>=1'
+  - status-success=continuous-integration/travis-ci
+- name: automerge branch
+ actions:
+    merge:
+      method: merge
+      rebase_fallback: merge
+  conditions:
+  - base=automerge
+  - label!=no-mergify
+  - status-success=continuous-integration/travis-ci
