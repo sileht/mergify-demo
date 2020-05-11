@@ -8,4 +8,4 @@ I love Mergify!
 
 Me too!
 
-This is Amazing! Love Love Merify.
+This is Amazing! Love Love Mergify.
