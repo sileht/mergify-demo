@@ -32,21 +32,22 @@ pull_request_rules:
       summary: |
         {% if not check_succeed %}
         You are not authorized to create a pull request because you are not a
-        member of the dev group
+        member of the dev team.
         {% endif %}
-- name: check for labels
+- name: check for fixes
   conditions:
-    - label=feature
     - label=bug
+    - -body~=(?m)^Fixes MYPROJECT-
   actions:
     post_check:
       title: |
-        {% if not check_succeed %}
-        Labels are correct
+        {% if check_succeed %}
+        Bug identifier found
         {% else %}
-        Too many labels
+        No bug identifier
         {% endif %}
       summary: |
         {% if not check_succeed %}
-        Feature and Bug labels cannot be used at the same time.
+        You need to specify a link to a bug identifier, such as `Fixes
+        MYPROJECT-42` in your pull request.
         {% endif %}
