@@ -18,7 +18,7 @@ pull_request_rules:
   - label!=no-mergify
   - "status-success=test"
   name: automerge branch
-- name: check for authorization
+- name: Author Authorization
   conditions:
     - author!=@dev
   actions:
@@ -34,7 +34,7 @@ pull_request_rules:
         You are not authorized to create a pull request because you are not a
         member of the dev team.
         {% endif %}
-- name: check for fixes
+- name: Conventional Commit
   conditions:
     - "title~=^(fix|feat|docs|style|refactor|perf|test|build|ci|chore|revert)(?:\\(.+\\))?:"
   actions:
