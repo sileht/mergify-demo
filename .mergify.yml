@@ -36,18 +36,16 @@ pull_request_rules:
         {% endif %}
 - name: check for fixes
   conditions:
-    - label=bug
-    - -body~=(?m)^Fixes MYPROJECT-
+    - "title~=^(fix|feat|docs|style|refactor|perf|test|build|ci|chore|revert)(?:\\(.+\\))?:"
   actions:
     post_check:
       title: |
         {% if check_succeed %}
-        Bug identifier found
+        Title follows Conventional Commit
         {% else %}
-        No bug identifier
+        Title does not follow Conventional Commit
         {% endif %}
       summary: |
         {% if not check_succeed %}
-        You need to specify a link to a bug identifier, such as `Fixes
-        MYPROJECT-42` in your pull request.
+        Your pull request title must follow [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/).
         {% endif %}
