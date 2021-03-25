@@ -1,11 +1,6 @@
 name: Continuous Integration
 on:
   pull_request:
-    branches:
-      - master
-  pull_request_target:
-    branches:
-      - master
 
 jobs:
   test:
@@ -13,4 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          sleep 60
+          sleep 30
