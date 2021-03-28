@@ -1,7 +1,7 @@
 pull_request_rules:
   - name: automatic merge
     conditions:
-      - authors=@devs
+      - author=@devs
       - label=automerge
       - status-success=test
     actions:
@@ -34,3 +34,8 @@ pull_request_rules:
       label:
         add:
           - javascript
+
+  - name: clean branches
+    conditions: []
+    actions:
+      delete_head_branch:
