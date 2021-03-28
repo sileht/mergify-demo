@@ -24,3 +24,11 @@ pull_request_rules:
           {% if not check_succeed %}
           Your pull request title must follow [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/).
           {% endif %}
+
+  - name: add label on javascript pr
+    conditions:
+      - files~=javascript
+    actions:
+      label:
+        add:
+          - javascript
