@@ -1,8 +1,9 @@
 pull_request_rules:
   - name: automatic merge
     conditions:
+      - authors=@devs
       - label=automerge
-      - "status-success=test"
+      - status-success=test
     actions:
       merge:
         method: merge
