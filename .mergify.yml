@@ -42,7 +42,7 @@ pull_request_rules:
     actions:
       assign:
         add_users:
-          - sileht
+          - another-jd
 
   - name: clean branches
     conditions: []
