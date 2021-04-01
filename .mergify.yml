@@ -8,25 +8,7 @@ pull_request_rules:
       merge:
         method: merge
         rebase_fallback: merge
-
-
-  - name: Conventional Commit
-    conditions:
-      - files~=^conventional_commit/
-      - "title~=^(fix|feat|docs|style|refactor|perf|test|build|ci|chore|revert)(?:\\(.+\\))?:"
-    actions:
-      post_check:
-        title: |
-          {% if check_succeed %}
-          Title follows Conventional Commit
-          {% else %}
-          Title does not follow Conventional Commit
-          {% endif %}
-        summary: |
-          {% if not check_succeed %}
-          Your pull request title must follow [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/).
-          {% endif %}
-
+        
   - name: add label on javascript pr
     conditions:
       - files~=javascript
