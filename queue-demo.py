@@ -30,8 +30,8 @@ g = github.Github(token)
 repo = g.get_repo("mergifyio/demo")
 
 main = repo.get_branch(branch="main")
-head1 = str(uuid.uuid4())
-head2 = str(uuid.uuid4())
+head1 = "snowflake-" + str(uuid.uuid4())
+head2 = "fire-" + str(uuid.uuid4())
 file1 = str(uuid.uuid4())
 file2 = str(uuid.uuid4())
 
