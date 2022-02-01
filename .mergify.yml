@@ -29,3 +29,17 @@ pull_request_rules:
     conditions: []
     actions:
       delete_head_branch:
+
+  - name: automatic queue for merge
+    conditions:
+      - author=@devs
+      - files~=^testbed/queue
+      - check-success=test
+    actions:
+      queue:
+        name: default
+        
+queue_rules:
+  - name: default
+    conditions:
+      - check-success=test
