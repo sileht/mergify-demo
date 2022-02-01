@@ -36,5 +36,10 @@ pull_request_rules:
       - files~=^testbed/queue
       - check-success=test
     actions:
-      merge:
-        method: merge
+      queue:
+        name: default
+        
+queue_rules:
+  - name: default
+    conditions:
+      - check-success=test
