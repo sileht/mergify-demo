@@ -27,7 +27,7 @@ def get_creds() -> str:
 try:
     PR_NUMBER = int(sys.argv[1])
 except (ValueError, IndexError):
-    PR_NUMBER = 2
+    PR_NUMBER = 3
 
 
 FLAVORS = (
