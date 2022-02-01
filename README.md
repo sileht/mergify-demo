@@ -24,3 +24,8 @@ You can use this demo by creating pull requests.
    [testbed](https://github.com/Mergifyio/demo/new/main/testbed) that ends up with the suffix **.py** in its name and submit a
    pull request (do not push directly!).
 2. The pull request will be assigned to `another-jd`.
+
+### 🐛 Merge Queue
+
+1. Run the `queue-demo.py` script on your computer.
+2. Two pull requests will be created and automatically queued, and then merged.
