@@ -58,7 +58,7 @@ main = repo.get_branch(branch="main")
 # we want to create our branch from an old commit so they are both updated for demo
 base_commit = repo.get_commits(sha=main.commit.sha)[1]
 
-for icon, flavor in random.choices(FLAVORS, k=PR_NUMBER):
+for icon, flavor in random.sample(FLAVORS, k=PR_NUMBER):
     head = f"{flavor}-{str(uuid.uuid4())}"
     filename = str(uuid.uuid4())
     repo.create_git_ref(f"refs/heads/{head}", base_commit.sha)  # create branch
