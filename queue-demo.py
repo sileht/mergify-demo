@@ -26,7 +26,7 @@ def get_creds() -> str:
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--number", "-n", help="Number of pull requests to create", default=3)
+parser.add_argument("--number", "-n", help="Number of pull requests to create", default=3, type=int)
 parser.add_argument("--mode", "-m", default="normal", choices=("normal", "manual", "batch", "speculative"))
 args = parser.parse_args()
 
@@ -66,7 +66,7 @@ for icon, flavor in random.sample(FLAVORS, k=args.number):
     repo.create_git_ref(f"refs/heads/{head}", base_commit.sha)  # create branch
     repo.create_file(f"testbed/queue/{args.mode}/{filename}", f"test {flavor}", flavor, branch=head)
     repo.create_pull(
-        title=f"{flavor.capitalize()} pull request {icon}",
+        title=f"{flavor.capitalize()} pull request {icon} ({args.mode} demo)",
         body=PR_BODY,
         head=head,
         base="main",
