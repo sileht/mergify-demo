@@ -33,11 +33,29 @@ pull_request_rules:
   - name: automatic queue for merge
     conditions:
       - author=@devs
-      - files~=^testbed/queue
+      - files~=^testbed/queue/normal
       - check-success=test
     actions:
       queue:
         name: default
+
+  - name: automatic queue for speculative merge
+    conditions:
+      - author=@devs
+      - files~=^testbed/queue/speculative
+      - check-success=test
+    actions:
+      queue:
+        name: speculative
+
+  - name: automatic queue for batch merge
+    conditions:
+      - author=@devs
+      - files~=^testbed/queue/batch
+      - check-success=test
+    actions:
+      queue:
+        name: speculative
 
 queue_rules:
   - name: default
