@@ -7,7 +7,7 @@ pull_request_rules:
     actions:
       merge:
         method: merge
-        
+
   - name: add label on javascript pr
     conditions:
       - files~=javascript
@@ -33,14 +33,41 @@ pull_request_rules:
   - name: automatic queue for merge
     conditions:
       - author=@devs
-      - files~=^testbed/queue
+      - files~=^testbed/queue/normal
       - check-success=test
     actions:
       queue:
         name: default
-        
+
+  - name: automatic queue for speculative merge
+    conditions:
+      - author=@devs
+      - files~=^testbed/queue/speculative
+      - check-success=test
+    actions:
+      queue:
+        name: speculative
+
+  - name: automatic queue for batch merge
+    conditions:
+      - author=@devs
+      - files~=^testbed/queue/batch
+      - check-success=test
+    actions:
+      queue:
+        name: speculative
+
 queue_rules:
   - name: default
     conditions:
-     # Fake schedule
-     - schedule=Mon-Sun
+     - check-success=test
+
+  - name: batch
+    conditions:
+     - check-success=test
+    batch_size: 5
+
+  - name: speculative
+    conditions:
+     - check-success=test
+    speculative_checks: 5
