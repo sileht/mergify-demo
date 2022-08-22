@@ -55,7 +55,7 @@ pull_request_rules:
       - check-success=test
     actions:
       queue:
-        name: speculative
+        name: batch
 
 queue_rules:
   - name: default
