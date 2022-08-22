@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import random
 import subprocess
 import uuid
@@ -24,10 +25,10 @@ def get_creds() -> str:
     raise RuntimeError("Unable to find github.com creds")
 
 
-try:
-    PR_NUMBER = int(sys.argv[1])
-except (ValueError, IndexError):
-    PR_NUMBER = 3
+parser = argparse.ArgumentParser()
+parser.add_argument("--number", "-n", help="Number of pull requests to create", default=3)
+parser.add_argument("--mode", "-m", default="normal", choices=("normal", "manual", "batch", "speculative"))
+args = parser.parse_args()
 
 
 FLAVORS = (
@@ -38,6 +39,7 @@ FLAVORS = (
     ("🐸", "frog"),
     ("🐮", "cow"),
     ("☁", "cloud️"),
+    ("🚲", "bike"),
 )
 
 
@@ -58,11 +60,11 @@ main = repo.get_branch(branch="main")
 # we want to create our branch from an old commit so they are both updated for demo
 base_commit = repo.get_commits(sha=main.commit.sha)[1]
 
-for icon, flavor in random.sample(FLAVORS, k=PR_NUMBER):
+for icon, flavor in random.sample(FLAVORS, k=args.number):
     head = f"{flavor}-{str(uuid.uuid4())}"
     filename = str(uuid.uuid4())
     repo.create_git_ref(f"refs/heads/{head}", base_commit.sha)  # create branch
-    repo.create_file(f"testbed/queue/{filename}", f"test {flavor}", flavor, branch=head)
+    repo.create_file(f"testbed/queue/{args.mode}/{filename}", f"test {flavor}", flavor, branch=head)
     repo.create_pull(
         title=f"{flavor.capitalize()} pull request {icon}",
         body=PR_BODY,
