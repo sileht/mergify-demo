@@ -26,7 +26,7 @@ def get_creds() -> str:
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--number", "-n", help="Number of pull requests to create", default=3)
+parser.add_argument("--number", "-n", help="Number of pull requests to create", default=3, type=int)
 parser.add_argument("--mode", "-m", default="normal", choices=("normal", "manual", "batch", "speculative"))
 args = parser.parse_args()
 
