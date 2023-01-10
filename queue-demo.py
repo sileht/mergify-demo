@@ -28,7 +28,7 @@ def get_creds() -> str:
 parser = argparse.ArgumentParser()
 parser.add_argument("--number", "-n", help="Number of pull requests to create", default=3, type=int)
 parser.add_argument("--mode", "-m", default="normal", choices=("normal", "manual", "batch", "speculative"))
-parser.add_argument("--repo", "-r", help="Repository to use for demo", default="mergifyio/demo")
+parser.add_argument("--repo", "-r", help="Repository to use for demo", default="mergify-demo/demo")
 args = parser.parse_args()
 
 
