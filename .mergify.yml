@@ -1,7 +1,6 @@
 pull_request_rules:
   - name: automatic merge
     conditions:
-      - author=@devs
       - label=automerge
       - check-success=test
     actions:
@@ -32,7 +31,6 @@ pull_request_rules:
 
   - name: automatic queue for merge
     conditions:
-      - author=@devs
       - files~=^testbed/queue/normal
       - check-success=test
     actions:
@@ -41,7 +39,6 @@ pull_request_rules:
 
   - name: automatic queue for speculative merge
     conditions:
-      - author=@devs
       - files~=^testbed/queue/speculative
       - check-success=test
     actions:
@@ -50,7 +47,6 @@ pull_request_rules:
 
   - name: automatic queue for batch merge
     conditions:
-      - author=@devs
       - files~=^testbed/queue/batch
       - check-success=test
     actions:
